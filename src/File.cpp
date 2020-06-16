@@ -1,9 +1,17 @@
 #include "tntn/File.h"
 #include "tntn/logging.h"
+#include "tntn/util.h"
 
 #include <cstdio>
 #include <errno.h>
 #include <limits>
+
+#ifdef _MSC_VER
+inline off_t ftello(FILE* fp)
+{
+    return ftell(fp);
+}
+#endif
 
 namespace tntn {
 
